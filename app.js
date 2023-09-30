@@ -4,7 +4,7 @@ const cors = require("cors");
 const createError = require("http-errors");
 const app = express();
 // const { recipesRouter } = require("./routes/recipes");
-// const { authRouter } = require("./routes/auth");
+const { authRouter } = require("./routes/auth");
 // const { userRouter } = require("./routes/user");
 
 const { tryCatchWrapper } = require("./helpers/index");
@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 // app.use(express.static("public"));
 //Routes
 // app.use("/api/recipes", recipesRouter);
-// app.use("/api/auth", authRouter);
+app.use("/api/auth", authRouter);
 // app.use("/api/users", userRouter);
 // app.use((_, res), () => {
 //   return res.send("Hello kitty");
