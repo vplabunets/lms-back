@@ -43,7 +43,7 @@ async function signIn(req, res, next) {
     const accessToken = await jwt.sign({ id: storedUser._id }, JWT_SECRET, {
       expiresIn: "1h",
     });
-    return res.status(202).json({ data: { accessToken, user:{email:storedUser.email, name:storedUser.name} } });
+    return res.status(202).json({ accessToken, user:{email:storedUser.email, name:storedUser.name} });
   } catch (err) {
     console.error(err);
   }
