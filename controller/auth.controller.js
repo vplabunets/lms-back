@@ -13,10 +13,11 @@ async function signUp(req, res, next) {
     const savedUser = await User.create({
       name,
       email,
+      type: "student",
       password: hashedPassword,
     });
     res.status(201).json({
-      user: { name, email, id: savedUser._id },
+      user: { name, email, type, id: savedUser._id },
     });
   } catch (err) {
     if (err.message.includes("E11000 duplicate key error")) {
