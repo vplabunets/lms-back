@@ -13,11 +13,11 @@ async function signUp(req, res, next) {
     const savedUser = await User.create({
       name,
       email,
-      type: "student",
+      userType: "student",
       password: hashedPassword,
     });
     res.status(201).json({
-      user: { name, email, type, id: savedUser._id },
+      user: { name, email, userType, id: savedUser._id },
     });
   } catch (err) {
     if (err.message.includes("E11000 duplicate key error")) {
@@ -44,7 +44,7 @@ async function signIn(req, res, next) {
     const accessToken = await jwt.sign({ id: storedUser._id }, JWT_SECRET, {
       expiresIn: "1h",
     });
-    return res.status(202).json({ accessToken, user:{email:storedUser.email, name:storedUser.name, type:storedUser.type} });
+    return res.status(202).json({ accessToken, user:{email:storedUser.email, name:storedUser.name, userType:storedUser.userType} });
   } catch (err) {
     console.error(err);
   }
