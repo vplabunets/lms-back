@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema(
       minLength: [6, "password should be at least 6 characters long"],
       // maxLength: [10, "password should be not more than 10 characters long"],
     },
+
+    userType: {
+      type: String,
+    },
     // recipes: [
     //   {
     //     type: mongoose.Schema.Types.ObjectId,
