@@ -10,9 +10,6 @@ const userSchema = mongoose.Schema(
       unique: true,
       match: [/[a-z0-9]+@[a-z0-9]+/, "user email is not valid"],
     },
-    type:{
-      type: String,
-    },
     password: {
       type: String,
       minLength: [6, "password should be at least 6 characters long"],
