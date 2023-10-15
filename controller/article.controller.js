@@ -49,13 +49,13 @@ async function getArticleById(req, res, next) {
 
   async function updateArticle(req, res, next) {
     const { _id } = req.params;
-    console.log(req.params);
+    console.log(_id);
 
     try{
     const updatedArticle = await Article.findByIdAndUpdate(_id, req.body, {
       new: true,
     });
-    console.log(updatedArticle);
+    // console.log(updatedArticle);
     return res.status(200).json(updatedArticle);}
     catch (error) {
       console.error(err);
