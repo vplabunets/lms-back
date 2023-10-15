@@ -2,10 +2,7 @@
 const createError = require("http-errors");
 const { Article } = require("../models/article");
 // async function addRecipe(req, res, next) {
-//   const { name } = req.body;
-//   await Recipe.create({ name });
-//   return res.status(201).json(req.body);
-// }
+
 async function createArticle (req, res, next) {
   const { category, title, body, viewed } = req.body;
    try {
@@ -37,7 +34,7 @@ async function getArticles(req, res, next) {
     const skip = (page - 1) * limit;
     const articles = await Article.find({}).skip(skip).limit(limit);
 
-    return res.status(200).json({ articles });
+    return res.status(200).json(articles);
   } catch (err) {
     console.error(err);
   }
