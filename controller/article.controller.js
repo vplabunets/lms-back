@@ -37,7 +37,6 @@ async function getArticles(req, res, next) {
 }
 async function getArticleById(req, res, next) {
   const { _id } = req.params;
-  console.log(req.params);
   try {
     const article = await Article.findById(_id);
     if (!article) {
@@ -46,9 +45,22 @@ async function getArticleById(req, res, next) {
     return res.status(200).json(article);
   } catch (error) {
     console.error(err);
+  }}
+
+  async function updateArticle(req, res, next) {
+    const { _id } = req.params;
+    console.log(req.params);
+
+    try{
+    const updatedArticle = await Article.findByIdAndUpdate(_id, req.body, {
+      new: true,
+    });
+    console.log(updatedArticle);
+    return res.status(200).json(updatedArticle);}
+    catch (error) {
+      console.error(err);
+    }
   }
- 
-}
 
 
 
@@ -57,4 +69,6 @@ async function getArticleById(req, res, next) {
 
 
 
-module.exports = { createArticle, getArticles,getArticleById };
+
+
+module.exports = { createArticle, getArticles,getArticleById,updateArticle };
