@@ -1,13 +1,13 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const createError = require("http-errors");
+// const createError = require("http-errors");
 const app = express();
 // const { recipesRouter } = require("./routes/recipes");
 const { authRouter } = require("./routes/auth");
-// const { userRouter } = require("./routes/user");
+const { articleRouter } = require("./routes/article");
 
-const { tryCatchWrapper } = require("./helpers/index");
+// const { tryCatchWrapper } = require("./helpers/index");
 
 //Middlewares
 app.use(cors());
@@ -15,7 +15,7 @@ app.use(express.json()); // express works with json in body
 app.use(morgan("dev"));
 // app.use(express.static("public"));
 //Routes
-// app.use("/api/recipes", recipesRouter);
+app.use("/api/articles", articleRouter);
 app.use("/api/auth", authRouter);
 // app.use("/api/users", userRouter);
 // app.use((_, res), () => {
@@ -44,8 +44,8 @@ app.use((err, req, res, next) => {
       message: err.message,
     });
   }
-  
-  return res.status(500).json({ message: "Internal Server Error" });
+  console.log(err);
+   return res.status(500).json({ message: "Internal Server Error" });
 });
 
 module.exports = { app };
