@@ -1,8 +1,7 @@
 
 const createError = require("http-errors");
 const { Article } = require("../models/article");
-// async function addRecipe(req, res, next) {
-
+ 
 async function createArticle (req, res, next) {
   const { category, title, body, viewed } = req.body;
    try {
@@ -24,9 +23,6 @@ async function createArticle (req, res, next) {
   }
 }
 
-
-
-
 async function getArticles(req, res, next) {
   const { limit = 0, page = 1} = req.body;
 
@@ -39,5 +35,26 @@ async function getArticles(req, res, next) {
     console.error(err);
   }
 }
+async function getArticleById(req, res, next) {
+  const { _id } = req.params;
+  console.log(req.params);
+  try {
+    const article = await Article.findById(_id);
+    if (!article) {
+      return res.status(400).json({ message: "Article not found" });
+    }
+    return res.status(200).json(article);
+  } catch (error) {
+    console.error(err);
+  }
+ 
+}
 
-module.exports = { createArticle, getArticles };
+
+
+
+
+
+
+
+module.exports = { createArticle, getArticles,getArticleById };
