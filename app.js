@@ -15,7 +15,7 @@ app.use(express.json()); // express works with json in body
 app.use(morgan("dev"));
 // app.use(express.static("public"));
 //Routes
-app.use("/api/articles", articleRouter);
+app.use("/api/technical-articles", articleRouter);
 app.use("/api/auth", authRouter);
 // app.use("/api/users", userRouter);
 // app.use((_, res), () => {
@@ -24,6 +24,7 @@ app.use("/api/auth", authRouter);
 
 //404 error handling
 app.use((req, res) => {
+  console.log(res);
   res.status(404).json({
     message: "Not Found 2",
   });
