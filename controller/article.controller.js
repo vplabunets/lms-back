@@ -47,6 +47,19 @@ async function getArticleById(req, res, next) {
     console.error(err);
   }}
 
+  async function getArticleByTitle(req, res, next) {
+    const { title } = req.params;
+    console.log(title);
+    try {
+      const article = await Article.findOne({title});
+      if (!article) {
+        return res.status(400).json({ message: "Article not found" });
+      }
+      return res.status(200).json(article);
+    } catch (error) {
+      console.error(err);
+    }}
+
   async function updateArticle(req, res, next) {
     const { _id } = req.params;
     console.log(_id);
@@ -71,4 +84,4 @@ async function getArticleById(req, res, next) {
 
 
 
-module.exports = { createArticle, getArticles,getArticleById,updateArticle };
+module.exports = { createArticle, getArticles,getArticleById,getArticleByTitle,updateArticle };

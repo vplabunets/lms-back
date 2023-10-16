@@ -24,7 +24,7 @@ app.use("/api/auth", authRouter);
 
 //404 error handling
 app.use((req, res) => {
-  console.log(res);
+  // console.log(res);
   res.status(404).json({
     message: "Not Found 2",
   });
