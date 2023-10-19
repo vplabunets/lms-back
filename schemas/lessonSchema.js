@@ -6,7 +6,7 @@ const lessonSchema = mongoose.Schema(
       type: String,
       unique:true
     },
-    subject: {
+    course: {
       type: String,
     },
     title: {

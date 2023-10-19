@@ -7,14 +7,14 @@ async function addLesson (req, res, next) {
    try {
      await Lesson.create({
       serialNumber,
-      subject,
+      course,
       title,
       url,
       addMaterials
       });
     res.status(201).json({
         serialNumber,
-        subject,
+        course,
         title,
         url,
         addMaterials},
@@ -88,4 +88,9 @@ async function getLessonBySerialNumber(req, res, next) {
 
 
 
-module.exports = { addLesson, getLessons,getLessonByTitle,getLessonBySerialNumber,updateLesson };
+module.exports = {  addLesson,
+                    getLessons,
+                    getLessonByTitle,
+                    getLessonBySerialNumber,
+                    updateLesson,
+                 };
