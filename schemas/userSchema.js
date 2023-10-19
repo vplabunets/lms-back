@@ -19,12 +19,12 @@ const userSchema = mongoose.Schema(
     userType: {
       type: String,
     },
-    // recipes: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "recipe",
-    //   },
-    // ],
+    articles: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "acticle",
+      },
+    ],
   },
   { versionKey: false, timestamps: true }
 );
