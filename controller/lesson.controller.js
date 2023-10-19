@@ -3,7 +3,7 @@ const createError = require("http-errors");
 const { Lesson } = require("../models/lesson");
  
 async function addLesson (req, res, next) {
-  const { serialNumber, subject, title, url,addMaterials } = req.body;
+  const { serialNumber, course, title, url,addMaterials } = req.body;
    try {
      await Lesson.create({
       serialNumber,
