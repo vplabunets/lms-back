@@ -12,13 +12,6 @@ const PORT = process.env.PORT || 3001;
 async function main() {
   try {
     await mongoose.connect(HOST_URI);
-    // const User = mongoose.model("xxx", userSchema);
-    // const savedUser = await User.create({
-    //   name: "hohohoho",
-    //   email: "lalala21@ukr.net",
-    //   password: "aaaaaaaaaaa",
-    // });
-    // console.log(savedUser);
 
     console.log("Connected to mongodb");
     app.listen(PORT, () => {

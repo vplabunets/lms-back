@@ -7,6 +7,7 @@ const app = express();
 const { authRouter } = require("./routes/auth");
 const { articleRouter } = require("./routes/article");
 const { lessonRouter } = require("./routes/lesson");
+const { statisticsRouter } = require("./routes/statistics");
 
 // const { tryCatchWrapper } = require("./helpers/index");
 
@@ -19,6 +20,8 @@ app.use(morgan("dev"));
 app.use("/api/auth", authRouter);
 app.use("/api/lessons", lessonRouter);
 app.use("/api/technical-articles", articleRouter);
+app.use("/api/statistics", statisticsRouter);
+
 // app.use("/api/users", userRouter);
 // app.use((_, res), () => {
 //   return res.send("Hello kitty");
