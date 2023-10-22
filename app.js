@@ -8,6 +8,7 @@ const { authRouter } = require("./routes/auth");
 const { articleRouter } = require("./routes/article");
 const { lessonRouter } = require("./routes/lesson");
 const { statisticsRouter } = require("./routes/statistics");
+const { homeworkRouter } = require("./routes/homework");
 
 // const { tryCatchWrapper } = require("./helpers/index");
 
@@ -19,6 +20,7 @@ app.use(morgan("dev"));
 //Routes
 app.use("/api/auth", authRouter);
 app.use("/api/lessons", lessonRouter);
+app.use("/api/homeworks", homeworkRouter);
 app.use("/api/technical-articles", articleRouter);
 app.use("/api/statistics", statisticsRouter);
 
