@@ -21,6 +21,9 @@ const homeworkSchema = mongoose.Schema(
     completed: {
       type: Array,
     },
+    complexity:{
+      type:String
+    }
   },
   { versionKey: false, timestamps: true }
 );

@@ -3,7 +3,7 @@ const createError = require("http-errors");
 const { Homework } = require("../models/homework");
  
 async function addHomework(req, res, next) {
-  const { serialNumber, course, title, deadline,mainInfo, completed} = req.body;
+  const { serialNumber, course, title, deadline,mainInfo, completed,complexity} = req.body;
    try {
      await Homework.create({
       serialNumber,
@@ -11,7 +11,8 @@ async function addHomework(req, res, next) {
       title,
       deadline,
       mainInfo,
-      completed
+      completed,
+      complexity
       });
     res.status(201).json({
         serialNumber,
@@ -19,7 +20,9 @@ async function addHomework(req, res, next) {
         title,
         deadline,
         mainInfo,
-      completed},
+        completed,
+        complexity
+      },
     );
   } catch (err) {
     console.log(err)
