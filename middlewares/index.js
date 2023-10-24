@@ -33,7 +33,6 @@ async function auth(req, res, next) {
     throw err;
   }
 
-
   return next();
 }
 

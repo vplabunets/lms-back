@@ -1,20 +1,22 @@
-
 const createError = require("http-errors");
 const { Article } = require("../models/article");
- 
-async function createArticle (req, res, next) {
+
+async function createArticle(req, res, next) {
   const { category, title, body, viewed } = req.body;
-   try {
+  try {
     console.log(req.body);
     await Article.create({
       category,
       title,
       body,
-      viewed
-      });
+      viewed,
+    });
     res.status(201).json({
-      category, title, body, viewed},
-    );
+      category,
+      title,
+      body,
+      viewed,
+    });
   } catch (err) {
     if (err.message.includes("E11000 duplicate key error")) {
       return next(createError(409, "Atricle with this title already exists"));
@@ -24,7 +26,7 @@ async function createArticle (req, res, next) {
 }
 
 async function getArticles(req, res, next) {
-  const { limit = 0, page = 1} = req.body;
+  const { limit = 0, page = 1 } = req.body;
 
   try {
     const skip = (page - 1) * limit;
@@ -45,43 +47,42 @@ async function getArticleById(req, res, next) {
     return res.status(200).json(article);
   } catch (error) {
     console.error(err);
-  }}
+  }
+}
 
-  async function getArticleByTitle(req, res, next) {
-    const { title } = req.params;
-    console.log(title);
-    try {
-      const article = await Article.findOne({title});
-      if (!article) {
-        return res.status(400).json({ message: "Article not found" });
-      }
-      return res.status(200).json(article);
-    } catch (error) {
-      console.error(err);
-    }}
+async function getArticleByTitle(req, res, next) {
+  const { title } = req.params;
+  console.log(title);
+  try {
+    const article = await Article.findOne({ title });
+    if (!article) {
+      return res.status(400).json({ message: "Article not found" });
+    }
+    return res.status(200).json(article);
+  } catch (error) {
+    console.error(err);
+  }
+}
 
-  async function updateArticle(req, res, next) {
-    const { _id } = req.params;
-    console.log(_id);
+async function updateArticle(req, res, next) {
+  const { _id } = req.params;
+  console.log(_id);
 
-    try{
+  try {
     const updatedArticle = await Article.findByIdAndUpdate(_id, req.body, {
       new: true,
     });
     // console.log(updatedArticle);
-    return res.status(200).json(updatedArticle);}
-    catch (error) {
-      console.error(err);
-    }
+    return res.status(200).json(updatedArticle);
+  } catch (error) {
+    console.error(err);
   }
+}
 
-
-
-
-
-
-
-
-
-
-module.exports = { createArticle, getArticles,getArticleById,getArticleByTitle,updateArticle };
+module.exports = {
+  createArticle,
+  getArticles,
+  getArticleById,
+  getArticleByTitle,
+  updateArticle,
+};

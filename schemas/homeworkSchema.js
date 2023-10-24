@@ -4,13 +4,13 @@ const homeworkSchema = mongoose.Schema(
   {
     serialNumber: {
       type: String,
-     },
+    },
     course: {
       type: String,
     },
     title: {
       type: String,
-      unique: true,   
+      unique: true,
     },
     deadline: {
       type: String,
@@ -21,9 +21,9 @@ const homeworkSchema = mongoose.Schema(
     completed: {
       type: Array,
     },
-    complexity:{
-      type:String
-    }
+    complexity: {
+      type: String,
+    },
   },
   { versionKey: false, timestamps: true }
 );

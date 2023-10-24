@@ -7,11 +7,10 @@ const statisticsSchema = mongoose.Schema(
     },
     rating: {
       type: Array,
-     },
+    },
     completionQuality: {
       type: Array,
     },
- 
   },
   { versionKey: false, timestamps: true }
 );

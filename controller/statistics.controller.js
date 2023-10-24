@@ -1,20 +1,19 @@
-
 const createError = require("http-errors");
- const { Statistics } = require("../models/statistic");
- 
-async function addStatistics (req, res, next) {
+const { Statistics } = require("../models/statistic");
+
+async function addStatistics(req, res, next) {
   const { attendance, rating, completionQuality } = req.body;
-   try {
-     await Statistics.create({
+  try {
+    await Statistics.create({
       attendance,
       rating,
-      completionQuality
-      });
+      completionQuality,
+    });
     res.status(201).json({
       attendance,
       rating,
-      completionQuality,},
-    );
+      completionQuality,
+    });
   } catch (err) {
     if (err.message.includes("E11000 duplicate key error")) {
       return next(createError(409, "Item with this title already exists"));
@@ -24,7 +23,7 @@ async function addStatistics (req, res, next) {
 }
 
 async function getStatistics(req, res, next) {
-  const { limit = 0, page = 1} = req.body;
+  const { limit = 0, page = 1 } = req.body;
 
   try {
     const skip = (page - 1) * limit;
@@ -34,31 +33,23 @@ async function getStatistics(req, res, next) {
   } catch (err) {
     console.error(err);
   }
-}  
-  async function updateStatistics(req, res, next) {
-    const { _id } = req.params;
-    console.log(_id);
+}
+async function updateStatistics(req, res, next) {
+  const { _id } = req.params;
+  console.log(_id);
 
-    try{
-    const updatedStatistics = await Statistics.findByIdAndUpdate(_id, req.body, {
-      new: true,
-    });
-     return res.status(200).json(updatedStatistics);}
-    catch (error) {
-      console.error(err);
-    }
+  try {
+    const updatedStatistics = await Statistics.findByIdAndUpdate(
+      _id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    return res.status(200).json(updatedStatistics);
+  } catch (error) {
+    console.error(err);
   }
+}
 
-
-
-
-
-
-
-
-
-
-module.exports = {  addStatistics,
-                    getStatistics,
-                    updateStatistics 
-                 };
+module.exports = { addStatistics, getStatistics, updateStatistics };

@@ -4,14 +4,14 @@ const lessonSchema = mongoose.Schema(
   {
     serialNumber: {
       type: String,
-      unique:true
+      unique: true,
     },
     course: {
       type: String,
     },
     title: {
       type: String,
-      unique: true,   
+      unique: true,
     },
     url: {
       type: String,
