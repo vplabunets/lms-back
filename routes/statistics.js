@@ -8,7 +8,7 @@ const { auth } = require("../middlewares/index");
 const statisticsRouter = express.Router();
 
 statisticsRouter.get("/", tryCatchWrapper(auth),tryCatchWrapper(getStatistics));
-statisticsRouter.post("/", tryCatchWrapper(addStatistics))
-statisticsRouter.put("/:_id", tryCatchWrapper(updateStatistics))
+statisticsRouter.post("/", tryCatchWrapper(auth), tryCatchWrapper(addStatistics),validateBody(statisticsSchema))
+statisticsRouter.put("/:_id",tryCatchWrapper(auth), tryCatchWrapper(updateStatistics))
 
 module.exports = { statisticsRouter };

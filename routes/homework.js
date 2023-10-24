@@ -13,10 +13,10 @@ const { auth } = require("../middlewares/index");
 const homeworkRouter = express.Router();
 
 homeworkRouter.get("/", tryCatchWrapper(auth),tryCatchWrapper(getHomeworks));
-homeworkRouter.get("/:serialNumber", tryCatchWrapper(getHomeworkBySerialNumber));
-homeworkRouter.get("/ids/:_id", tryCatchWrapper(getHomeworkById))
-homeworkRouter.get("/homework/:title", tryCatchWrapper(getHomeworkByTitle));
-homeworkRouter.post("/", tryCatchWrapper(addHomework))
-homeworkRouter.put("/:_id", tryCatchWrapper(updateHomework))
+homeworkRouter.get("/:serialNumber",tryCatchWrapper(auth), tryCatchWrapper(getHomeworkBySerialNumber));
+homeworkRouter.get("/ids/:_id",tryCatchWrapper(auth), tryCatchWrapper(getHomeworkById))
+homeworkRouter.get("/homework/:title",tryCatchWrapper(auth), tryCatchWrapper(getHomeworkByTitle));
+homeworkRouter.post("/", tryCatchWrapper(auth),tryCatchWrapper(addHomework),validateBody(homeworkSchema))
+homeworkRouter.put("/:_id", tryCatchWrapper(auth),tryCatchWrapper(updateHomework))
 
 module.exports = { homeworkRouter };
