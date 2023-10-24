@@ -10,7 +10,7 @@ const lessonRouter = express.Router();
 lessonRouter.get("/", tryCatchWrapper(auth),tryCatchWrapper(getLessons));
 lessonRouter.get("/:serialNumber", tryCatchWrapper(auth),tryCatchWrapper(getLessonBySerialNumber));
 lessonRouter.get("/lesson/:title",tryCatchWrapper(auth), tryCatchWrapper(getLessonByTitle));
-lessonRouter.post("/",tryCatchWrapper(auth), tryCatchWrapper(addLesson))
+lessonRouter.post("/",tryCatchWrapper(auth), tryCatchWrapper(addLesson),validateBody(lessonSchema))
 lessonRouter.put("/:_id",tryCatchWrapper(auth), tryCatchWrapper(updateLesson))
 
 module.exports = { lessonRouter };
