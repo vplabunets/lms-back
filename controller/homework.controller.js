@@ -93,12 +93,20 @@ async function getHomeworkByTitle(req, res, next) {
 
 async function updateHomework(req, res, next) {
   const { _id } = req.params;
-  console.log(_id);
+  console.log("id", _id);
 
   try {
-    const updatedHomework = await Homework.findByIdAndUpdate(_id, req.body, {
-      new: true,
-    });
+    const updatedHomework = await Homework.findByIdAndUpdate(
+      _id,
+      {
+        $push: {
+          completed: req.body,
+        },
+      },
+      {
+        new: true,
+      }
+    );
     return res.status(200).json(updatedHomework);
   } catch (error) {
     console.error(err);

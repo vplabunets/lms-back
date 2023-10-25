@@ -18,9 +18,14 @@ const homeworkSchema = mongoose.Schema(
     body: {
       type: String,
     },
-    completed: {
-      type: Array,
-    },
+    completed: [
+      {
+        user: { type: String, unique: true },
+        completed: String,
+        grade: Number,
+      },
+    ],
+
     complexity: {
       type: String,
     },

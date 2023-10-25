@@ -36,7 +36,7 @@ homeworkRouter.post(
   tryCatchWrapper(addHomework),
   validateBody(homeworkSchema)
 );
-homeworkRouter.put(
+homeworkRouter.patch(
   "/:_id",
   tryCatchWrapper(auth),
   tryCatchWrapper(updateHomework)

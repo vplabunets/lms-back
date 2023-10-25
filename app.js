@@ -31,6 +31,7 @@ app.use("/api/statistics", statisticsRouter);
 
 //404 error handling
 app.use((req, res) => {
+  console.log(req);
   console.log(res.error);
   res.status(404).json({
     message: "Not Found 2",
@@ -53,7 +54,7 @@ app.use((err, req, res, next) => {
     });
   }
   console.log(err);
-   return res.status(500).json({ message: "Internal Server Error" });
+  return res.status(500).json({ message: "Internal Server Error" });
 });
 
 module.exports = { app };
