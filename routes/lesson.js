@@ -30,6 +30,10 @@ lessonRouter.post(
   tryCatchWrapper(addLesson),
   validateBody(lessonSchema)
 );
-lessonRouter.put("/:_id", tryCatchWrapper(auth), tryCatchWrapper(updateLesson));
+lessonRouter.put(
+  "/:_id",
+  //  tryCatchWrapper(auth),
+  tryCatchWrapper(updateLesson)
+);
 
 module.exports = { lessonRouter };

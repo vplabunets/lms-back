@@ -16,23 +16,23 @@ const articleRouter = express.Router();
 articleRouter.get("/", tryCatchWrapper(auth), tryCatchWrapper(getArticles));
 articleRouter.get(
   "/:_id",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getArticleById)
 );
 articleRouter.get(
   "/titles/:title",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getArticleByTitle)
 );
 articleRouter.post(
   "/",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(createArticle),
   validateBody(articleSchema)
 );
 articleRouter.put(
   "/:_id",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(updateArticle)
 );
 

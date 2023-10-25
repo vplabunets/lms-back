@@ -14,31 +14,35 @@ const { auth } = require("../middlewares/index");
 
 const homeworkRouter = express.Router();
 
-homeworkRouter.get("/", tryCatchWrapper(auth), tryCatchWrapper(getHomeworks));
+homeworkRouter.get(
+  "/",
+  // tryCatchWrapper(auth),
+  tryCatchWrapper(getHomeworks)
+);
 homeworkRouter.get(
   "/:serialNumber",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getHomeworkBySerialNumber)
 );
 homeworkRouter.get(
   "/ids/:_id",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getHomeworkById)
 );
 homeworkRouter.get(
   "/homework/:title",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getHomeworkByTitle)
 );
 homeworkRouter.post(
   "/",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(addHomework),
   validateBody(homeworkSchema)
 );
 homeworkRouter.patch(
   "/:_id",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(updateHomework)
 );
 

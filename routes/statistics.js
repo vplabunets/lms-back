@@ -13,18 +13,18 @@ const statisticsRouter = express.Router();
 
 statisticsRouter.get(
   "/",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getStatistics)
 );
 statisticsRouter.post(
   "/",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(addStatistics),
   validateBody(statisticsSchema)
 );
 statisticsRouter.put(
   "/:_id",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(updateStatistics)
 );
 
