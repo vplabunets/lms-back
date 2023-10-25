@@ -20,8 +20,9 @@ const homeworkSchema = mongoose.Schema(
     },
     completed: [
       {
+        _id: false,
         user: { type: String, unique: true },
-        completed: String,
+        status: String,
         grade: Number,
       },
     ],
