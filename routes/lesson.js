@@ -13,20 +13,24 @@ const { auth } = require("../middlewares/index");
 
 const lessonRouter = express.Router();
 
-lessonRouter.get("/", tryCatchWrapper(auth), tryCatchWrapper(getLessons));
+lessonRouter.get(
+  "/",
+  //  tryCatchWrapper(auth),
+  tryCatchWrapper(getLessons)
+);
 lessonRouter.get(
   "/:serialNumber",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getLessonBySerialNumber)
 );
 lessonRouter.get(
   "/lesson/:title",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(getLessonByTitle)
 );
 lessonRouter.post(
   "/",
-  tryCatchWrapper(auth),
+  // tryCatchWrapper(auth),
   tryCatchWrapper(addLesson),
   validateBody(lessonSchema)
 );
