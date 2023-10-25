@@ -13,7 +13,11 @@ const { auth } = require("../middlewares/index");
 
 const articleRouter = express.Router();
 
-articleRouter.get("/", tryCatchWrapper(auth), tryCatchWrapper(getArticles));
+articleRouter.get(
+  "/",
+  // tryCatchWrapper(auth),
+  tryCatchWrapper(getArticles)
+);
 articleRouter.get(
   "/:_id",
   // tryCatchWrapper(auth),
